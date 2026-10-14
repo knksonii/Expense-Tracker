@@ -1,0 +1,20 @@
+:root {
+    --teal: #216D6B;
+    --light-teal: #408280;
+    --dark-teal: #185957;
+
+    --background:#F5F5F5;
+
+    --text-dark: #752de0;
+    --text-grey: #b477ff;
+
+    --border: #E5E5E5;
+
+    --success: #35B878;
+    --danger: #E86B6B;
+}
+
+
+* {
+    box-sizing: border-box;
+}

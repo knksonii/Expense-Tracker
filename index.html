@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="ext.css">
+</head>
+<body>
+
+          <!--HEADER -->
+
+    <header class="top-header">
+        <div class="container-fluid">
+            <div class="header-content">
+
+                <!-- Logo -->
+                <div class="logo">
+                    <i class="bi bi-wallet2"></i>
+
+                    <span>
+                        Expense <strong>Tracker</strong>
+                    </span>
+                </div>
+
+                <!-- Tagline -->
+                <div class="tagline">
+                    <i class="bi bi-wallet2"></i>
+
+                    <span>
+                        Track Expenses, Manage better.
+                    </span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!--SECTION-->
+
+    <section class=" py-5">
+
+    <div class="container">
+        <div class="row g-4">
+
+            <div class=" col-md-4">
+
+                <div class="card text-center">
+
+                    <i class="bi bi-cash-stack"></i>
+
+                    <h5>Total Income</h5>
+                     <h3 id="totalIncome">₹0</h3>
+
+                </div>
+
+            </div>
+
+            <div class=" col-md-4">
+
+                <div class="card text-center">
+
+                    <i class="bi bi-graph-up"></i>
+
+                    <h5>Total Balance</h5>
+                     <h3 id="totalBalance">₹0</h3>
+
+                </div>
+
+            </div>
+
+            <div class=" col-md-4">
+
+                <div class="card  text-center">
+
+                    <i class="bi bi-receipt"></i>
+
+                    <h5>Total expenses</h5>
+                     <h3 id="totalExpenses">₹0</h3>
+
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</section>
+
+ <!-- Added Transaction Form -->
+<section>
+       
+<div class="card border-0 shadow-sm rounded-4 p-4">
+
+    <!-- Form Heading -->
+    <div class="d-flex align-items-center mb-4">
+        <div class="bg-primary text-white rounded-circle p-2 me-3">
+            <i class="bi bi-plus-lg fs-4"></i>
+        </div>
+
+        <div>
+            <h3 class="mb-1">Add New Transaction</h3>
+            <p class="text-secondary mb-0">
+                Enter your transaction details below to keep track of your expenses and income.
+            </p>
+        </div>
+    </div>
+
+
+    <form id="transactionForm">
+
+        <div class="row g-4">
+
+            <!-- Description -->
+            <div  class="col-md-6">
+                <label for="description" class="form-label fw-semibold">
+                    Description
+                </label>
+
+                <div class="input-group">
+                    <span class="input-group-text bg-white">
+                        <i class="bi bi-receipt"></i>
+                    </span>
+
+                    <input type="text" class="form-control" id="description"
+                        placeholder="e.g. Groceries, Salary, Electricity bill...">
+                </div>
+            </div>
+
+
+            <!-- Amount -->
+            <div class="col-md-6">
+                <label for="amount" class="form-label fw-semibold">
+                    Amount
+                </label>
+
+                <div class="input-group">
+                    <span class="input-group-text bg-white">
+                        ₹
+                    </span>
+
+                    <input 
+                        type="number" class="form-control" id="amount" placeholder="Enter amount">
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- Transaction Type -->
+        <div class="mt-4">
+
+            <label class="form-label fw-semibold">
+                Transaction Type
+            </label>
+
+            <div class="row g-3">
+
+                <!-- Income -->
+                <div class="col-md-6">
+                    <input type="radio" class="btn-check" name="transactionType" id="income" 
+                    value="income" checked>
+
+                    <label class="btn btn-outline-success w-100 py-3" for="income">
+
+                        <i class="bi bi-arrow-up-right me-2"></i>
+                        Income
+                    </label>
+                </div>
+
+
+                <!-- Expense -->
+                <div class="col-md-6">
+                    <input type="radio" class="btn-check" name="transactionType" 
+                    id="expense" value="expense" >
+
+                    <label 
+                        class="btn btn-outline-danger w-100 py-3"
+                        for="expense"
+                    >
+                        <i class="bi bi-receipt me-2"></i>
+                        Expense
+                    </label>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Add Transaction Button -->
+        <div class="d-grid mt-4">
+
+            <button type="submit" class="btn btn-primary py-3 fw-semibold">
+                <i class="bi bi-plus-circle me-2"></i>
+                Add Transaction
+            </button>
+
+        </div>
+
+    </form>
+
+</div>
+</section>
+
+<!-- Transactions -->
+<section class="container py-5">
+
+<div class="card border-0 shadow-sm rounded-4 p-4 mt-4">
+
+    <!-- Header -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <div class="d-flex align-items-center">
+
+            <div class="bg-light rounded-circle p-3 me-3">
+                <i class="bi bi-clock-history fs-4"></i>
+            </div>
+
+            <div>
+                <h4 class="mb-1">Recent Transactions</h4>
+                <p class="text-secondary mb-0">
+                    Your latest income and expenses
+                </p>
+            </div>
+
+        </div>
+
+        <button class="btn btn-outline-secondary rounded-pill">
+            View All <i class="bi bi-arrow-right"></i>
+        </button>
+
+    </div>
+
+
+    <!-- Transaction Table -->
+    <div class="table-responsive">
+
+        <table id="transactionTable" class="table align-middle mb-0">
+
+            <thead class="table-light">
+
+                <tr>
+                    <th>#</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Amount</th>
+                    <th>Date</th>
+                    <th>Action</th>
+                </tr>
+
+            </thead>
+
+            <tbody id="transactionList">
+
+                <!-- Transactions will be added here using JavaScript -->
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!--custom javascript-->
+
+<script src="script.js"></script>
+
+</body>
+</html>
