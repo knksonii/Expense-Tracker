@@ -29,84 +29,90 @@
                 <!-- Logo -->
                 <div class="logo">
                     <i class="bi bi-wallet2"></i>
-
-                    <span>
-                        Expense <strong>Tracker</strong>
-                    </span>
+                       
+                    <div class="logo-text"> 
+                      <h1>Expense Tracker</h1>
+                      <p>Track Your Money, Manage better.</p>
+                    </div>
+                     
                 </div>
+                
+                  <!--date-->
+                 <div class="current-date">
+                     <i class="bi bi-calendar-event"></i>
 
-                <!-- Tagline -->
-                <div class="tagline">
-                    <i class="bi bi-wallet2"></i>
-
-                    <span>
-                        Track Expenses, Manage better.
-                    </span>
+                    <span id="currentDate"></span>
                 </div>
 
             </div>
-
         </div>
-
     </header>
 
 
     <!--SECTION-->
 
-    <section class=" py-5">
+<section class=" py-5">
 
     <div class="container">
         <div class="row g-4">
 
+            <!-- Total Balance -->
             <div class=" col-md-4">
+                <div class="summary-card balance-card">
 
-                <div class="card text-center">
+                    <div class="summary-icon">
+                        <i class="bi bi-wallet2"></i>
+                    </div>
 
-                    <i class="bi bi-cash-stack"></i>
-
-                    <h5>Total Income</h5>
-                     <h3 id="totalIncome">₹0</h3>
+                    <div>
+                      <h5>Total Balance</h5>
+                      <h3 id="totalBalance">₹0</h3>
+                    </div>
 
                 </div>
-
             </div>
 
+            <!--total income-->
             <div class=" col-md-4">
+                <div class="summary-card income-card">
 
-                <div class="card text-center">
+                    <div class="summary-icon">
+                        <i class="bi bi-graph-up"></i>
+                    </div>
 
-                    <i class="bi bi-graph-up"></i>
-
-                    <h5>Total Balance</h5>
-                     <h3 id="totalBalance">₹0</h3>
+                    <div>
+                       <h5>Total Balance</h5>
+                       <h3 id="totalBalance">₹0</h3>
+                    </div>
 
                 </div>
-
             </div>
-
+            
+             <!-- Total Expenses -->
             <div class=" col-md-4">
+                <div class="summary-card expense-card">
 
-                <div class="card  text-center">
+                    <div class="summary-icon">
+                        <i class="bi bi-receipt"></i>
+                    </div>
 
-                    <i class="bi bi-receipt"></i>
-
-                    <h5>Total expenses</h5>
-                     <h3 id="totalExpenses">₹0</h3>
-
+                    <div>
+                      <h5>Total Income</h5>
+                      <h3 id="totalExpenses">₹0</h3>
+                    </div>
 
                 </div>
-
             </div>
-
+           
         </div>
     </div>
 
 </section>
 
  <!-- Added Transaction Form -->
-<section>
-       
-<div class="card border-0 shadow-sm rounded-4 p-4">
+<section class="transaction-section py-4">
+    <div class="container-fluid">
+      <div class="card border-0 shadow-sm rounded-4 p-4 transaction-form-card">
 
     <!-- Form Heading -->
     <div class="d-flex align-items-center mb-4">
@@ -115,7 +121,7 @@
         </div>
 
         <div>
-            <h3 class="mb-1">Add New Transaction</h3>
+            <h3 class="mb-1 fw-bold">Add New Transaction</h3>
             <p class="text-secondary mb-0">
                 Enter your transaction details below to keep track of your expenses and income.
             </p>
@@ -216,25 +222,26 @@
 
     </form>
 
-</div>
+    </div>
+  </div>
 </section>
 
-<!-- Transactions -->
-<section class="container py-5">
-
-<div class="card border-0 shadow-sm rounded-4 p-4 mt-4">
+<!-- Recent transactions details -->
+<section class="transactions-section py-5">
+    <div class="container-fluid">
+      <div class="card border-0 shadow-sm rounded-4 p-4 transactions-card">
 
     <!-- Header -->
-    <div class="d-flex justify-content-between align-items-center mb-4">
+    <div class="transactions-header">
 
-        <div class="d-flex align-items-center">
+        <div class="d-flex align-items-center gap-3">
 
-            <div class="bg-light rounded-circle p-3 me-3">
+            <div class="transactions-icon">
                 <i class="bi bi-clock-history fs-4"></i>
             </div>
 
             <div>
-                <h4 class="mb-1">Recent Transactions</h4>
+                <h4 class="mb-1 fw-bold">Recent Transactions</h4>
                 <p class="text-secondary mb-0">
                     Your latest income and expenses
                 </p>
@@ -242,9 +249,15 @@
 
         </div>
 
-        <button class="btn btn-outline-secondary rounded-pill">
-            View All <i class="bi bi-arrow-right"></i>
-        </button>
+        <div class="filter-wrapper">
+           <i class="bi bi-funnel"></i>
+
+             <select id="transactionFilter" class="form-select">
+               <option value="all">All Transactions</option>
+               <option value="income">Income</option>
+               <option value="expense">Expense</option>
+            </select>
+        </div>
 
     </div>
 
@@ -274,11 +287,23 @@
             </tbody>
 
         </table>
-
     </div>
 
-</div>
+      <!--when there is no transaction-->
+       <div id="emptyState" class="empty-state">
 
+          <div class="empty-state-icon">
+             <i class="bi bi-receipt-cutoff"></i>
+          </div>
+
+            <h5>No transactions yet</h5>
+            <p>Add your first transaction to see it here.</p>
+
+       </div> 
+
+
+    </div>
+  </div>
 </section>
 
 
