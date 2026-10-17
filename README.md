@@ -4,11 +4,11 @@ frontend development.
 
 Features
 
-Add income and expense transactions
-Calculate total income, expenses, and balance
-Delete transactions
-Filter transactions by type (All, Income, Expense)
-Save data using Local Storage
-Display the current date
-Responsive user interface
-Show an empty state when no transactions are available
+Add income and expense transactions,
+Calculate total income, expenses, and balance,
+Delete transactions,
+Filter transactions by type (All, Income, Expense),
+Save data using Local Storage,
+Display the current date,
+Responsive user interface,
+Show an empty state when no transactions are available.
