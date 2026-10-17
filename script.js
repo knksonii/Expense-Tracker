@@ -1,12 +1,34 @@
+const currentDate = document.getElementById("currentDate");
+
+     const today = new Date();
+
+  currentDate.textContent = today.toLocaleDateString("en-GB", {
+     weekday: "short",
+     day: "2-digit",
+     month: "short",
+     year: "numeric"
+     });
+
 const transactionForm = document.getElementById("transactionForm");
 const descriptionInput = document.getElementById("description");
 const amountInput = document.getElementById("amount");
 const incomeInput = document.getElementById("income");
 const expenseInput = document.getElementById("expense");
+
 const totalBalance = document.getElementById("totalBalance");
 const totalIncome = document.getElementById("totalIncome");
-const totalExpenses = document.getElementById("totalExpenses");
+const totalExpenses = document.getElementById("totalExpenses"); 
 
+const emptyState = document.getElementById("emptyState");
+
+const transactionFilter = document.getElementById("transactionFilter");
+     
+    let currentFilter = "all"; 
+
+    transactionFilter.addEventListener("change", function(){
+        currentFilter = transactionFilter.value;
+         renderTransactions();
+    });
 
 
 
@@ -28,6 +50,7 @@ transactionForm.addEventListener("submit", function(event) {
             return;
         }
 
+
     let type;
 
      if (incomeInput.checked) {
@@ -36,11 +59,13 @@ transactionForm.addEventListener("submit", function(event) {
             type = expenseInput.value;
      }
 
-     
+     const today = new Date();
+
       const transaction = {
            description: description,
            amount: amount,
-           type: type
+           type: type,
+           date: today.toLocaleDateString()
        };
      
  transactions.push(transaction);
@@ -76,22 +101,35 @@ function updateSummary(){
 
             balance = income - expenses;
          
-        totalIncome.textContent = income;
-         totalExpenses.textContent = expenses;
-         totalBalance.textContent = balance;
+        totalIncome.textContent = `₹ ${income}`;
+         totalExpenses.textContent = `₹ ${expenses}`;
+         totalBalance.textContent = `₹ ${balance}`;
  
         }
 
 
-
-
-
+ 
 function renderTransactions() {
           let tableList = document.getElementById("transactionList");
 
           tableList.innerHTML = "";
 
-transactions.forEach(function(transaction, index) {
+ 
+      let filteredTransaction = transactions;
+
+      if (currentFilter !== "all"){
+          filteredTransaction = transactions.filter(function(transaction){
+            return transaction.type === currentFilter;
+          });
+      }
+     
+      if (filteredTransaction.length === 0) {
+        emptyState.style.display = "block";
+      } else {
+        emptyState.style.display = "none";
+      }
+
+filteredTransaction.forEach(function(transaction, index) {
 
 
     let tableRow = document.createElement("tr");
@@ -110,8 +148,7 @@ transactions.forEach(function(transaction, index) {
      amountCell.textContent = transaction.amount;
 
      let dateCell = document.createElement("td");
-        const today= new Date ();
-      dateCell.textContent = today.toLocaleDateString();
+        dateCell.textContent = transaction.date;
      
    let actionCell = document.createElement("td");
 
@@ -120,7 +157,8 @@ transactions.forEach(function(transaction, index) {
 
             deletebtn.addEventListener("click" ,function(event){
                
-               transactions.splice(index,1);
+               const originalIndex = transactions.indexOf(transaction);
+               transactions.splice(originalIndex, 1);
 
                localStorage.setItem("transactions" , JSON.stringify(transactions));
 
@@ -129,10 +167,6 @@ transactions.forEach(function(transaction, index) {
             });
 
      actionCell.append(deletebtn);
-
-
-
-     
 
      tableRow.append(numberCell);
      tableRow.append(descriptionCell);
@@ -148,8 +182,6 @@ transactions.forEach(function(transaction, index) {
 
 }
   
-
-
 renderTransactions();
 updateSummary();
 

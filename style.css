@@ -1,20 +1,301 @@
 :root {
-    --teal: #216D6B;
-    --light-teal: #408280;
-    --dark-teal: #185957;
+    /* Main Colors */
+    --primary-color: #128C87;
+    --background-color: #F7FAFD;
+    --white: #FFFFFF;
+    --text-color: #102A43;
+    --text-light: #526783;
 
-    --background:#F5F5F5;
+    /* Balance Card */
+    --balance-bg: #F1FBFC;
+    --balance-border: #B5E9ED;
+    --balance-icon: #C9EFED;
 
-    --text-dark: #752de0;
-    --text-grey: #b477ff;
+    /* Income Card */
+    --income-bg: #F2FCF6;
+    --income-border: #A8EFCB;
+    --income-icon: #C9F8DC;
 
-    --border: #E5E5E5;
+    /* Expense Card */
+    --expense-bg: #FFF5F6;
+    --expense-border: #FFB8C4;
+    --expense-icon: #FFDCE2;
 
-    --success: #35B878;
-    --danger: #E86B6B;
+    /* Other Colors */
+    --border-color: #E2EAF2;
+    --input-border: #B8C6DE;
+    --table-bg: #F5F7FB;
+
+    /* Shadow */
+    --shadow: 0 3px 12px rgba(16, 42, 67, 0.06);
 }
 
+/* Basic Styling */
 
 * {
     box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: Arial, sans-serif;
+}
+
+.container-fluid {
+    padding-left: 28px;
+    padding-right: 28px;
+}
+
+/* Header */
+
+.top-header {
+    background-color: var(--white);
+    padding: 20px 0;
+    border-radius: 18px 18px 0 0;
+    box-shadow: var(--shadow);
+}
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+.logo-text {
+    display: flex;
+    flex-direction: column;
+}
+.logo > i {
+    font-size: 48px;
+    color: var(--primary-color);
+}
+.logo h1 {
+    font-size: 30px;
+    font-weight: bold;
+    margin: 0;
+}
+.logo p {
+    color: var(--text-light);
+    margin: 0;
+}
+.current-date {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    background-color: #F0FBFA;
+    border: 1px solid #BCE9E5;
+    border-radius: 16px;
+    color: var(--primary-color);
+}
+
+/* Summary Cards */
+.summary-section {
+    padding: 20px 0 30px;
+}
+
+.summary-card {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 24px;
+    height: 100%;
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    background-color: var(--white);
+}
+
+.summary-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 70px;
+    height: 70px;
+    border-radius: 16px;
+    font-size: 32px;
+}
+.summary-card h5 {
+    font-size: 18px;
+    color: var(--text-light);
+    margin-bottom: 8px;
+}
+.summary-card h3 {
+    font-size: 28px;
+    font-weight: bold;
+    color: var(--text-color);
+    margin: 0;
+}
+
+.balance-card {
+    background-color: var(--balance-bg);
+    border-color: var(--balance-border);
+}
+.balance-card .summary-icon {
+    background-color: var(--balance-icon);
+    color: #064E59;
+}
+
+.income-card {
+    background-color: var(--income-bg);
+    border-color: var(--income-border);
+}
+.income-card .summary-icon {
+    background-color: var(--income-icon);
+    color: #009B50;
+}
+
+.expense-card {
+    background-color: var(--expense-bg);
+    border-color: var(--expense-border);
+}
+.expense-card .summary-icon {
+    background-color: var(--expense-icon);
+    color: #C4162A;
+}
+
+/* Transaction Form */
+
+.transaction-section {
+    padding-left: 12px;
+    padding-right: 12px;
+}
+.transaction-form-card {
+    background-color: var(--white);
+    border: 1px solid var(--border-color) !important;
+    box-shadow: var(--shadow) !important;
+}
+
+.transaction-form-card h3 {
+    color: var(--text-color);
+}
+
+.transaction-form-card .form-control {
+    border-color: var(--input-border);
+    padding: 12px;
+}
+
+.transaction-form-card .form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(18, 140, 135, 0.12);
+}
+.transaction-form-card .input-group-text {
+    background-color: var(--white);
+    border-color: var(--input-border);
+}
+
+#transactionForm button[type="submit"] {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    border-radius: 10px;
+    font-weight: 600;
+}
+
+#transactionForm button[type="submit"]:hover {
+    background-color: #087773;
+    border-color: #087773;
+}
+
+
+/* Recent Transactions details */
+
+.transactions-section {
+    padding-bottom: 25px;
+}
+.transactions-card {
+    background-color: var(--white);
+    border: 1px solid var(--border-color) !important;
+    box-shadow: var(--shadow) !important;
+}
+.transactions-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+.transactions-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    background-color: #D7F2EF;
+    color: var(--primary-color);
+    border-radius: 50%;
+    font-size: 28px;
+    flex-shrink: 0;
+}
+.transactions-header h3 {
+    color: var(--text-color);
+    font-size: 25px;
+}
+
+.transactions-header p {
+    color: var(--text-light);
+    font-size: 14px;
+}
+.filter-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 5px 10px;
+    background-color: #F0FBFA;
+    border: 1px solid var(--primary-color);
+    border-radius: 10px;
+    color: var(--primary-color);
+}
+
+.filter-wrapper .form-select {
+    width: auto;
+    min-width: 180px;
+    border: none;
+    background-color: transparent;
+    color: var(--text-color);
+    box-shadow: none;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 500;
+}
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    width: 100%;
+    min-height: 200px;  
+    box-sizing: border-box;
+}
+.empty-state-icon{
+    width:80px;
+     height: 80px;
+    background-color: #D7F2EF;
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-inline: auto;
+    border-radius: 50%;
+    font-size: 32px;
+    
+}
+
+.empty-state h3 {
+    color: var(--text-color);
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0 0 5px;
+}
+
+.empty-state p {
+    color: var(--text-light);
+    font-size: 14px;  
 }
