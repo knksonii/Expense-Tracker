@@ -38,7 +38,7 @@ transactionForm.addEventListener("submit", function(event) {
 
     event.preventDefault(); 
 
-    const description = descriptionInput.value;
+    const description = descriptionInput.value.trim();
        if (description === ""){
             alert( 'PLEASE ENTER DESCRIPTION')
              return;
